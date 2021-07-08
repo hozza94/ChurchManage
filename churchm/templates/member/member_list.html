@@ -1,9 +1,37 @@
-{% if member_list %}
-<ul>
-    {% for member in member_list %}
-    <li><a href="/detail/{{ member.id }}/">{{ member.name }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>저장된 교인이 없습니다.</p>
-{% endif %}
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<div class="container my-3">
+    <table class="table table-striped table-hover">
+
+        <thead>
+        <tr class="table-secondary text-dark">
+            <th>번호</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>핸드폰번호</th>
+            <th>주소</th>
+            <th>작성일</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if member_list %}
+        {% for member in member_list %}
+        <tr>
+            <td> {{ loop.index }}</td>
+            <td><a href="{{ url_for('member.detail', member_id=member.id)}}">{{ member.name }}</a></td>
+            <td> {{ member.age }}</td>
+            <td> {{ member.sex }}</td>
+            <td> {{ member.contact1 }}</td>
+            <td> {{ member.address }}</td>
+            <td> {{ member.create_date }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">등록된 교인이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
