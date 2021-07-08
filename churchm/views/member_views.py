@@ -15,5 +15,5 @@ def _list():
 # 교인 개인 조회
 @bp.route('/detail/<int:member_id>/')
 def detail(member_id):
-    member = Member.query.get(member_id)
+    member = Member.query.get_or_404(member_id)
     return render_template('member/member_detail.html', member=member)

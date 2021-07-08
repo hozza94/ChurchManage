@@ -7,8 +7,11 @@ class User(db.Model):
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
 
-    create_date = db.Column(db.DateTime(), nullable=False)
-    modify_date = db.Column(db.DateTime(), nullable=True)
+    # create_date = db.Column(db.DateTime(), nullable=True)
+    # modify_date = db.Column(db.DateTime(), nullable=True)
+
+    # 조회 수정 권한 부여 normal, manager, admin
+    grade = db.Column(db.String(40), nullable=True, default='normal')
     # 보류
     # email = db.Column(db.String(120), unique=True, nullable=False)
 
@@ -31,6 +34,7 @@ class Member(db.Model):
     marriage = db.Column(db.String(5), nullable=False)
     prevChurch = db.Column(db.String(100), nullable=True)
     #
+    # 2021-07-09 00:00:00.0 타입 조심
     create_date = db.Column(db.DateTime(), nullable=False)
     modify_date = db.Column(db.DateTime(), nullable=True)
     # 보류
