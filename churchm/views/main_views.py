@@ -7,10 +7,11 @@ bp = Blueprint('main', __name__, url_prefix='/')
 # 인삿말
 @bp.route('/hello')
 def hello():
-    return 'hi 방가방가'
+    return render_template('index.html')
 
 
 # 기본 페이지
 @bp.route('/')
 def index():
-    return redirect(url_for('member._list'))
+    # return render_template('index.html')
+    return redirect(url_for('main.hello'))

@@ -1,12 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends "base.html" %}
+{% block content %}
 
-    <h1> 글쓰기 </h1>
-</head>
-<body>
+    <div class="container my-5" style="text-align : center;">
+        {% if g.user %}
+        <a href="#">
+            <img src="static/pigeon.png" width="300" height="250">
+        </a>
+        <pre style="font-family:빙그레 메로나체; font-size:18px;">순복음 빛으로 교회 교적 관리 웹 입니다. <p> <b>{{ g.user.username }}</b>님 환영합니다. </pre>
 
-</body>
-</html>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}">
+            <img src="static/pigeon.png" width="300" height="250">
+        </a>
+        <pre style="font-family:빙그레 메로나체; font-size:18px;">순복음 빛으로 교회 교적 관리 웹 입니다. <p>로그인을 원하시면 위의 비둘기를 눌러주세요. </pre>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
+
+{% if g.user %}
+<ul class="navbar-nav">
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
+    </li>
+</ul>
+{% else %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
+    </li>
+</ul>
+{% endif %}

@@ -1,3 +1,5 @@
+<!-- 상단 navbar -->
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <a class="navbar-brand" href="{{ url_for('main.index') }}"> ITTC </a>
     <button class="navbar-toggler ml-auto" type="button"
@@ -14,6 +16,12 @@
                 <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
             </li>
         </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="{{ url_for('member._list') }}">교적관리</a>
+            </li>
+        </ul>
+
         {% else %}
         <ul class="navbar-nav">
             <li class="nav-item">
