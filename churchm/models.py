@@ -22,7 +22,7 @@ class Member(db.Model):
     name = db.Column(db.String(10), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     sex = db.Column(db.String(2), nullable=False)
-    birthday = db.Column(db.DateTime(), nullable=True)
+    birthday = db.Column(db.Date(), nullable=True)
     contact1 = db.Column(db.String(15), nullable=True)
     contact2 = db.Column(db.String(15), nullable=True)
     contact3 = db.Column(db.String(15), nullable=True)
@@ -30,7 +30,7 @@ class Member(db.Model):
     job = db.Column(db.String(20), nullable=True)
     email = db.Column(db.String(100), nullable=True)
     baptism = db.Column(db.String(10), nullable=False)
-    baptismDay = db.Column(db.DateTime(), nullable=True)
+    baptismDay = db.Column(db.Date(), nullable=True)
     marriage = db.Column(db.String(5), nullable=False)
     prevChurch = db.Column(db.String(100), nullable=True)
     #

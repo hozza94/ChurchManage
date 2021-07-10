@@ -3,8 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
 from churchm import db
-from churchm.forms import UserCreateForm, UserLoginForm
-from churchm.models import User
+from churchm.forms import UserCreateForm, UserLoginForm, MemberCreateForm
+from churchm.models import User, Member
 
 import functools
 
@@ -65,4 +65,18 @@ def login_required(view):
         if g.user is None:
             return redirect(url_for('auth.login'))
         return view(**kwargs)
+
     return wrapped_view
+
+
+@bp.route('/add/', methods=('GET', 'POST'))
+def add():
+    form = MemberCreateForm()
+
+    if request.method == 'POST' and form.validate_on_submit():
+        member = Member()
+        db.session.add(member)
+        db.session.commit()
+        return redirect(url_for('member.list'))
+
+    return render_template('auth/add.html', form=form)

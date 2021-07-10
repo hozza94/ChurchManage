@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-3 mb-3 p-1">
+    <form method="post" class="post-form">
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
+
+        <div class="row form-group">
+            <div class="col-sm-10 col-md-12 col-lg-12 mb-1">
+                <div id="content" class="border-top border-secondary">
+                    <div class="content_block">
+                        <h4 class="border-bottom p-2" align="center">현재 <b>{{ g.user.username }}</b>님께서 작성중입니다.</h4>
+
+                        <label for="memberName">이름</label>
+                        <input type="text" class="form-control" name="memberName" id="memberName"
+                               value="{{ form.memberName.data or '' }}">
+
+                        <label for="memberAge">나이</label>
+                        <input type="number" class="form-control" name="memberName" id="memberAge"
+                               value="{{ form.memberAge.data or '' }}">
+
+                        <label for="memberSex">성별</label>
+                        <input type="text" class="form-control" name="memberSex" id="memberSex"
+                               value="{{ form.memberSex.data or '' }}">
+
+                        <label for="memberBirthday">생년월일</label>
+                        <input type="date" class="form-control" name="memberBirthday" id="memberBirthday"
+                               value="{{ form.memberBirthday.data or '' }}">
+
+                        <label for="memberContact1">연락처 1</label>
+                        <input type="text" class="form-control" name="memberContact1" id="memberContact1"
+                               value="{{ form.memberContact1.data or '' }}" placeholder="000-0000-0000 형식으로 적어주세요.">
+
+                        <label for="memberContact2">연락처 2</label>
+                        <input type="text" class="form-control" name="memberContact2" id="memberContact2"
+                               value="{{ form.memberContact2.data or '' }}" placeholder="000-0000-0000 형식으로 적어주세요.">
+
+                        <label for="memberContact3">연락처 3</label>
+                        <input type="text" class="form-control" name="memberContact3" id="memberContact3"
+                               value="{{ form.memberContact3.data or '' }}" placeholder="000-0000-0000 형식으로 적어주세요.">
+
+                        <label for="memberAddress">주소</label>
+                        <input type="text" class="form-control" name="memberAddress" id="memberAddress"
+                               value="{{ form.memberAddress.data or '' }}">
+
+                        <label for="memberJob">직업</label>
+                        <input type="text" class="form-control" name="memberJob" id="memberJob"
+                               value="{{ form.memberJob.data or '' }}">
+
+                        <label for="memberEmail">이메일</label>
+                        <input type="text" class="form-control" name="memberEmail" id="memberEmail"
+                               value="{{ form.memberEmail.data or '' }}" placeholder="example@ittc.com 형식으로 적어주세요.">
+
+                        <label for="memberBaptism">침례 여부</label>
+                        <input type="text" class="form-control" name="memberBaptism" id="memberBaptism"
+                               value="{{ form.memberBaptism.data or '' }}" placeholder="O, X 형식으로 적어주세요.">
+
+                        <label for="memberBaptismDay">침례일</label>
+                        <input type="date" class="form-control" name="memberBaptismDay" id="memberBaptismDay"
+                               value="{{ form.memberBaptismDay.data or '' }}">
+
+                        <label for="memberMarriage">결혼 여부</label>
+                        <input type="text" class="form-control" name="memberMarriage" id="memberMarriage"
+                               value="{{ form.memberMarriage.data or '' }}" placeholder="O, X 형식으로 적어주세요.">
+
+                        <label for="memberPrevChurch">이전 교회</label>
+                        <input type="text" class="form-control" name="memberPrevChurch" id="memberPrevChurch"
+                               value="{{ form.memberPrevChurch.data or '' }}">
+
+
+
+                        <div class="mt-2" align="right">
+                            <button type="submit" class="btn btn-primary">등록하기</button>
+                            <button type="reset" class="btn btn-primary">지우기</button>
+                            <button type="button" class="btn btn-primary" onclick="history.back()">취소</button>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
