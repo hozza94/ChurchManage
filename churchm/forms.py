@@ -29,7 +29,7 @@ class MemberCreateForm(FlaskForm):
     memberJob = StringField('직업', validators=[])
     memberEmail = StringField('이메일', validators=[])
     memberBaptism = StringField('침례 여부', validators=[DataRequired('침례여부는 필수 입력 항목입니다.')])
-    memberBaptismDay = DateField('침례일', validators=[])
+    # memberBaptismDay = DateField('침례일', validators=[])
     memberMarriage = StringField('결혼 여부', validators=[DataRequired('결혼여부는 필수 입력 항목입니다.')])
     memberPrevChurch = StringField('이전 교회', validators=[])
     #

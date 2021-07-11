@@ -30,7 +30,7 @@ class Member(db.Model):
     job = db.Column(db.String(20), nullable=True)
     email = db.Column(db.String(100), nullable=True)
     baptism = db.Column(db.String(10), nullable=False)
-    baptismDay = db.Column(db.Date(), nullable=True)
+    # baptismDay = db.Column(db.Date(), nullable=True)
     marriage = db.Column(db.String(5), nullable=False)
     prevChurch = db.Column(db.String(100), nullable=True)
     #

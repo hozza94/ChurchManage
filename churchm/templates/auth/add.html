@@ -17,7 +17,7 @@
                                value="{{ form.memberName.data or '' }}">
 
                         <label for="memberAge">나이</label>
-                        <input type="number" class="form-control" name="memberName" id="memberAge"
+                        <input type="number" class="form-control" name="memberAge" id="memberAge"
                                value="{{ form.memberAge.data or '' }}">
 
                         <label for="memberSex">성별</label>
@@ -56,10 +56,6 @@
                         <input type="text" class="form-control" name="memberBaptism" id="memberBaptism"
                                value="{{ form.memberBaptism.data or '' }}" placeholder="O, X 형식으로 적어주세요.">
 
-                        <label for="memberBaptismDay">침례일</label>
-                        <input type="date" class="form-control" name="memberBaptismDay" id="memberBaptismDay"
-                               value="{{ form.memberBaptismDay.data or '' }}">
-
                         <label for="memberMarriage">결혼 여부</label>
                         <input type="text" class="form-control" name="memberMarriage" id="memberMarriage"
                                value="{{ form.memberMarriage.data or '' }}" placeholder="O, X 형식으로 적어주세요.">
@@ -71,12 +67,10 @@
 
 
                         <div class="mt-2" align="right">
-                            <button type="submit" class="btn btn-primary">등록하기</button>
+                            <button type="submit" class="btn btn-primary" onClick="this.style.visibility='hidden'" >등록하기</button>
                             <button type="reset" class="btn btn-primary">지우기</button>
                             <button type="button" class="btn btn-primary" onclick="history.back()">취소</button>
                         </div>
-
-
 
                     </div>
                 </div>

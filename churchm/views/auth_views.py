@@ -6,6 +6,7 @@ from churchm import db
 from churchm.forms import UserCreateForm, UserLoginForm, MemberCreateForm
 from churchm.models import User, Member
 
+from datetime import datetime
 import functools
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -70,13 +71,21 @@ def login_required(view):
 
 
 @bp.route('/add/', methods=('GET', 'POST'))
+@login_required
 def add():
     form = MemberCreateForm()
 
     if request.method == 'POST' and form.validate_on_submit():
-        member = Member()
+        member = Member(name=form.memberName.data, age=form.memberAge.data, sex=form.memberSex.data,
+                        birthday=form.memberBirthday.data, contact1=form.memberContact1.data,
+                        contact2=form.memberContact2.data, contact3=form.memberContact3.data,
+                        address=form.memberAddress.data, job=form.memberJob.data,
+                        email=form.memberEmail.data, baptism=form.memberBaptism.data,
+                        marriage=form.memberMarriage.data, prevChurch=form.memberPrevChurch.data,
+                        create_date=datetime.now(), modify_date=form.memberModify_date.data
+                        )
         db.session.add(member)
         db.session.commit()
-        return redirect(url_for('member.list'))
+        return redirect(url_for('member._list'))
 
     return render_template('auth/add.html', form=form)
