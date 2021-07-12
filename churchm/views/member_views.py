@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 
 from churchm.models import Member
 
@@ -24,10 +24,11 @@ def detail(member_id):
 
 
 # 교인 정보 수정
-@bp.route('/modify/<int:member_id>/')
+@bp.route('/modify/<int:member_id>/', methods=('GET', 'POST'))
 @login_required
 def modify(member_id):
-    return 0
+    member = Member.query.get_or_404(member_id)
+    return redirect(url_for('member._list'))
 
 
 # 교인 정보 삭제
