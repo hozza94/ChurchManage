@@ -76,6 +76,7 @@ def add():
     form = MemberCreateForm()
 
     if request.method == 'POST' and form.validate_on_submit():
+        print("add access")
         member = Member(name=form.memberName.data, age=form.memberAge.data, sex=form.memberSex.data,
                         birthday=form.memberBirthday.data, contact1=form.memberContact1.data,
                         contact2=form.memberContact2.data, contact3=form.memberContact3.data,

@@ -1,0 +1,3 @@
+input::-ms-input-placeholder { color: dark; font-weight: bold;}
+input::-webkit-input-placeholder { color: dark; font-weight: bold}
+input::-moz-placeholder { color: dark; font-weight: bold}

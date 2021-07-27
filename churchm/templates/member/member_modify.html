@@ -1,10 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/placeholder.css">
 
-</body>
-</html>
+<div style="font-family: 빙그레 메로나체" class="container mt-3 mb-3 p-1">
+    <form method="post" class="post-form">
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
+
+        <div class="row form-group">
+            <div class="col-sm-10 col-md-12 col-lg-12 mb-1">
+                <div id="content" class="border-top border-secondary">
+                    <div class="content_block">
+                        <h4 class="border-bottom p-2" align="center">현재 <b>{{ g.user.username }}</b>님께서 수정중입니다.</h4>
+
+                        <label for="memberName">이름</label>
+                        <input type="text" class="form-control" name="memberName" id="memberName"
+                               value="{{ member.name or '' }}">
+
+                        <p></p>
+                        <label for="memberAge">나이</label>
+                        <input type="number" class="form-control" name="memberAge" id="memberAge"
+                               value="{{ member.age or '' }}" >
+
+                        <p></p>
+                        <label for="memberSex">성별</label>
+                        <input type="text" class="form-control" name="memberSex" id="memberSex"
+                               value="{{ member.sex or '' }}" >
+
+                        <p></p>
+                        <label for="memberBirthday">생년월일</label>
+                        <input type="date" class="form-control" name="memberBirthday" id="memberBirthday"
+                               value="{{ member.birthday or '' }}" >
+
+                        <p></p>
+                        {% if member.contact1 %}
+                        <label for="memberContact1">연락처 1</label>
+                        <input type="text" class="form-control" name="memberContact1" id="memberContact1"
+                               value="{{ member.contact1 or '' }}" >
+                        {% endif %}
+                        <p></p>
+                        {% if member.contact2 %}
+                        <label for="memberContact2">연락처 2</label>
+                        <input type="text" class="form-control" name="memberContact2" id="memberContact2"
+                               value="{{ member.contact2 or '' }}" >
+                        {% endif %}
+                        <p></p>
+                        {% if member.contact3 %}
+                        <label for="memberContact3">연락처 3</label>
+                        <input type="text" class="form-control" name="memberContact3" id="memberContact3"
+                               value="{{ member.contact3 or '' }}" >
+                        {% endif %}
+                        <p></p>
+                        {% if member.address %}
+                        <label for="memberAddress">주소</label>
+                        <input type="text" class="form-control" name="memberAddress" id="memberAddress"
+                               value="{{ member.address or '' }}" >
+                        {% endif %}
+                        <p></p>
+                        {% if member.job %}
+                        <label for="memberJob">직업</label>
+                        <input type="text" class="form-control" name="memberJob" id="memberJob"
+                               value="{{ member.job or '' }}" >
+                        {% endif %}
+                        <p></p>
+                        {% if member.email %}
+                        <label for="memberEmail">이메일</label>
+                        <input type="text" class="form-control" name="memberEmail" id="memberEmail"
+                               value="{{ member.email or '' }}" >
+                        {% endif %}
+
+                        <p></p>
+                        <label for="memberBaptism">침례 여부</label>
+                        <input type="text" class="form-control" name="memberBaptism" id="memberBaptism"
+                               value="{{ member.baptism or '' }}" >
+
+                        <p></p>
+                        {% if member.marriage %}
+                        <label for="memberMarriage">결혼 여부</label>
+                        <input type="text" class="form-control" name="memberMarriage" id="memberMarriage"
+                               value="{{ member.marriage or '' }}" >
+                        {% endif %}
+                        <p></p>
+                        {% if member.prevChurch %}
+                        <label for="memberPrevChurch">이전 교회</label>
+                        <input type="text" class="form-control" name="memberPrevChurch" id="memberPrevChurch"
+                               value="{{ member.prevChurch or '' }}" >
+                        {% endif %}
+
+
+                        <div class="mt-2" align="right">
+                            <button type="submit" class="btn btn-primary"> 변경사항 저장하기 </button>
+                            <button type="reset" class="btn btn-primary"> 원래대로 </button>
+                            <button type="button" class="btn btn-primary" onClick="this.style.visibility='hidden'; location.href='{{ url_for('member.detail', member_id=member.id) }}'"> 취소 </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

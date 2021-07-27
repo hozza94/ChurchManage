@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container mt-3 mb-3 p-1">
+<div style="font-family: 빙그레 메로나체" class="container mt-3 mb-3 p-1">
     <form method="post" class="post-form">
         {{ form.csrf_token }}
         {% include "form_errors.html" %}
 
         <div class="row form-group">
             <div class="col-sm-10 col-md-12 col-lg-12 mb-1">
-                <div id="content" class="border-top border-secondary">
+                <div id="content1" class="border-top border-secondary">
                     <div class="content_block">
                         <h4 class="border-bottom p-2" align="center">현재 <b>{{ g.user.username }}</b>님께서 작성중입니다.</h4>
+
 
                         <label for="memberName">이름</label>
                         <input type="text" class="form-control" name="memberName" id="memberName"
@@ -65,9 +66,10 @@
                                value="{{ form.memberPrevChurch.data or '' }}">
 
 
-
                         <div class="mt-2" align="right">
-                            <button type="submit" class="btn btn-primary" onClick="this.style.visibility='hidden'" >등록하기</button>
+                            <button type="submit" class="btn btn-primary" onClick="this.style.visibility='hidden'">
+                                등록하기
+                            </button>
                             <button type="reset" class="btn btn-primary">지우기</button>
                             <button type="button" class="btn btn-primary" onclick="history.back()">취소</button>
                         </div>
@@ -76,6 +78,7 @@
                 </div>
             </div>
         </div>
+
     </form>
 </div>
 {% endblock %}

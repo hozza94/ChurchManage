@@ -3,17 +3,20 @@
 
 <div class="container mt-3 mb-3 p-1">
     <form method="post" class="post-form">
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
 
         <div style="font-family: 빙그레 메로나체" class="row form-group">
             <div class="col-sm-10 col-md-12 col-lg-12 mb-1">
                 <div id="content" class="border-top border-secondary">
                     <div class="content_block">
-                        <h4 class="border-bottom p-2" align="center">현재 <b>{{ g.user.username }}</b>님께서 <b>{{ member.name}}</b>님을 조회중입니다.</h4>
+                        <h4 class="border-bottom p-2" align="center">현재 <b>{{ g.user.username }}</b>님께서 <b>{{
+                            member.name}}</b>님을 조회중입니다.</h4>
 
                         <div class="col-12" align="center">
                             <img style="border: 1px solid skyblue" src="/static/pigeon.png" width="250" height="250">
                         </div>
-                        <div style="border: 1px solid skyblue; font-size: 20px " class="col-12 mt-1" >
+                        <div style="border: 1px solid skyblue; font-size: 20px " class="col-12 mt-1">
 
                             <div>
                                 <label class="border p-1 mt-1"> 이름 : {{ member.name }} </label>
@@ -24,62 +27,65 @@
 
                             <div>
                                 {% if member.email %}
-                                    <label class="border p-1 mt-1"> email : {{ member.email }} </label>
+                                <label class="border p-1 mt-1"> email : {{ member.email }} </label>
                                 {% endif %}
 
                                 {% if member.contact1 %}
-                                    <label class="border p-1 mt-1"> 연락처 : {{ member.contact1 }} </label>
+                                <label class="border p-1 mt-1"> 연락처 : {{ member.contact1 }} </label>
                                 {% endif %}
 
                                 {% if member.contact2 %}
-                                    <label class="border p-1 mt-1"> 연락처2 : {{ member.contact2 }} </label>
+                                <label class="border p-1 mt-1"> 연락처2 : {{ member.contact2 }} </label>
                                 {% endif %}
 
                                 {% if member.contact3 %}
-                                    <label class="border p-1 mt-1"> 연락처3 : {{ member.contact2 }} </label>
+                                <label class="border p-1 mt-1"> 연락처3 : {{ member.contact3 }} </label>
                                 {% endif %}
                             </div>
 
                             <div>
                                 {% if member.address %}
-                                    <label class="border p-1 mt-1"> 주소 : {{ member.address }} </label>
+                                <label class="border p-1 mt-1"> 주소 : {{ member.address }} </label>
                                 {% endif %}
 
                                 {% if member.job %}
-                                    <label class="border p-1 mt-1"> 직업 : {{ member.job }} </label>
+                                <label class="border p-1 mt-1"> 직업 : {{ member.job }} </label>
                                 {% endif %}
 
                                 {% if member.baptism %}
-                                    <label class="border p-1 mt-1"> 침례여부 : {{ member.baptism }} </label>
+                                <label class="border p-1 mt-1"> 침례여부 : {{ member.baptism }} </label>
                                 {% endif %}
 
                                 {% if member.marriage %}
-                                    <label class="border p-1 mt-1"> 결혼여부 : {{ member.marriage }} </label>
+                                <label class="border p-1 mt-1"> 결혼여부 : {{ member.marriage }} </label>
                                 {% endif %}
 
                             </div>
 
                             {% if member.prevChurch %}
-                                <div>
-                                    <label class="border p-1 mt-1"> 이전 교회 : {{ member.prevChurch }} </label>
-                                </div>
+                            <div>
+                                <label class="border p-1 mt-1"> 이전 교회 : {{ member.prevChurch }} </label>
+                            </div>
                             {% endif %}
 
 
                         </div>
 
                         <div class="col-6" align="left">
-                            <label class="p-1 mt-1" style="font-size: 12px"> 작성일자 : {{ member.create_date.now().date()}} </label>
+                            <label class="p-1 mt-1" style="font-size: 12px"> 작성일자 : {{
+                                member.create_date.now().date()}} </label>
 
                             {% if member.modify_date %}
-                            <label class="p-1 mt-1" style="font-size: 12px"> 수정일자 : {{ member.modify_date}} </label>
+                            <label class="p-1 mt-1" style="font-size: 12px"> 수정일자 : {{ member.modify_date.date()}} </label>
                             {% endif %}
                         </div>
                         <div class="col-12" align="center">
-                            <label class="p-1 mt-1">
-                                <button type="button" class="btn btn-primary" onClick="this.style.visibility='hidden'; location.href='{{ url_for('member.modify', member_id=member.id) }}'">수정하기</button>
-                                <button type="button" class="btn btn-primary" onclick="history.back()">취소</button>
-                            </label>
+                            <button type="button" class="btn btn-primary"
+                                    onClick="this.style.visibility='hidden'; location.href='{{ url_for('member.modify', member_id=member.id) }}'">
+                                수정하기
+                            </button>
+                            <button type="button" class="delete btn btn-danger" data-uri="{{ url_for('member.delete', member_id=member.id) }}">삭제</button>
+                            <button type="button" class="btn btn-primary" onClick="this.style.visibility='hidden'; location.href='{{ url_for('member._list') }}'">뒤로</button>
                         </div>
                     </div>
                 </div>
@@ -87,4 +93,16 @@
         </div>
     </form>
 </div>
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
 {% endblock %}
