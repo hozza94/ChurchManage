@@ -3,5 +3,6 @@
 /.idea/workspace.xml
 .idea
 churchm.db
+config.py
 *.pyc
 __pycache__
