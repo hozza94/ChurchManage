@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="container my-5" style="text-align : center;">
+    <div align="center">
         {% if g.user %}
-        <a href="#">
-            <img src="static/pigeon.png" width="300" height="250">
-        </a>
-        <pre style="font-family:빙그레 메로나체; font-size:18px;">순복음 빛으로 교회 교적 관리 웹 입니다. <p> <b>{{ g.user.username }}</b>님 환영합니다. </pre>
+
+        <div class="square">
+            <a href="#">
+                <img src="static/pigeon.png">
+            </a>
+        </div>
+        <div class="item">순복음 빛으로 교회 교적 관리 웹 입니다. <p> <b>{{ g.user.username }}</b>님 환영합니다. </div>
 
         {% else %}
-        <a href="{{ url_for('auth.login') }}">
-            <img src="static/pigeon.png" width="300" height="250">
-        </a>
-        <pre style="font-family:빙그레 메로나체; font-size:18px;">순복음 빛으로 교회 교적 관리 웹 입니다. <p>로그인을 원하시면 위의 비둘기를 눌러주세요. </pre>
+        <div class="square">
+            <a class="square" href="{{ url_for('auth.login') }}">
+                <img src="static/pigeon.png" width="300" height="250">
+            </a>
+        </div>
+        <div class="item">순복음 빛으로 교회 교적 관리 웹 입니다. <p>로그인을 원하시면 위의 비둘기를 눌러주세요. </div>
         {% endif %}
     </div>
 

@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'BinggraeMelona';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/BinggraeMelona.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html {
+    font-family:'BinggraeMelona';
+    font-size: 62.5%;
+}
+
+.input { font-size : 2.2rem}
+.item { font-size: 1.8rem; }
+.title { font-size: 3rem; }
+.tbClass { font-size: 1.8rem;}
+.navbar { font-size: 2rem; }
+.navbar-brand { font-size: 2rem; }
+
+
+.input .form-control{
+    width: 100%;
+    height: 500%;
+}
+.square {
+  width: 30rem;
+  height: 30rem;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media all and (max-width: 750px) {
+  html { font-size: 50%; } // 이제 문서 내 모든 rem 단위가 영향을 받습니다.
+
+}

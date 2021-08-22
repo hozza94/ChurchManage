@@ -41,6 +41,9 @@ def modify(member_id):
             form.populate_obj(member)
             member.modify_date = datetime.now()
             db.session.commit()
+            print(form.memberName.validators)
+            print(member.name)
+            print('no way')
             return redirect(url_for('member.detail', member_id=member_id))
     else:
         form = MemberCreateForm(obj=member)
