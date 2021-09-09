@@ -22,10 +22,10 @@ migrate = Migrate()
 def create_app():
     app = Flask(__name__)
 
-    app.config.from_object('APP_CONFIG_FILE')
+    app.config.from_envvar('APP_CONFIG_FILE')
 
     # ORM
-    # database 초기화 'falsk db init'
+    # database 초기화 'flask db init'
     # database
     db.init_app(app)
     migrate.init_app(app, db)
