@@ -40,7 +40,7 @@ def create_app():
     app.register_blueprint(member_views.bp)
     app.register_blueprint(auth_views.bp)
 
-    if __name__ == "__main__":
-        app.run(host='0.0.0.0', debug=True)
+    # remote 접속?
+    app.run(host='0.0.0.0', debug=True)
 
     return app
